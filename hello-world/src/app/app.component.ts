@@ -3,8 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title:string = 'Mari top';
+  /* Atributos */
+  title: string = 'HEROS BE HEROS';
+  activeRoute: string = 'home';
+
+  /* Metodos */
+  public setActiveRoute(value: string) {
+    this.activeRoute = value;
+  }
 }
