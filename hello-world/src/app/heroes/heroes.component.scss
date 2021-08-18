@@ -1,24 +1,37 @@
+
+.titulo-herois {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
 .heroes {
+  a {
+    &:link {
+      text-decoration: none;
+      color: black;
+    }
+    &:visited {
+      color: black;
+    }
+  }
+
   li {
-    margin-top: 20px;
+    padding-left: 1rem;
+    margin-top: 1.5rem;
     width: 100%;
     position: relative;
+    font-size: 1.5rem;
     &:hover > .hero-name {
       cursor: pointer;
-      background: rgb(214, 209, 209, 0.7);
+      background: red;
     }
-    .hero-id {
-      background: rgb(51, 58, 97);
-      color: white;
-      padding: 10px;
-      border-bottom-left-radius: 5px;
-      border-top-left-radius: 5px;
-      display: inline-block;
-    }
+
     .hero-name {
       background: rgb(214, 209, 209);
       padding: 10px;
-      display: inline-block;
+      display: flex;
       width: 300px;
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
@@ -28,4 +41,37 @@
       }
     }
   }
+}
+.novo-heroi {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .titulo-novo-heroi {
+    font-size: 1.5rem;
+    color: red;
+  }
+}
+.input-new-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input {
+    border-radius: 1rem;
+    border: solid 0.2rem;
+    width: 20%;
+    padding: 0.5rem;
+  }
+  .add-button {
+    border: solid 0.2rem;
+    border-radius: 1rem;
+    background: black;
+    color: white;
+    font-weight: 700;
+    padding: 0.5rem;
+  }
+}
+.delete {
+  display: flex;
+  justify-content: right;
 }

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+@import "../../assets/semantic/dist/semantic.css";
+@import "src/app/styles/_variables.scss";
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* everywhere else */
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
