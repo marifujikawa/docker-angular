@@ -1,29 +1,64 @@
 <div class="titulo-herois"><h2>Heróis Cadastrados</h2></div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
+<div class="heroes ui fluid">
+  <div>
     <div>
-      <a routerLink="/detail/{{ hero.id }}">
-        <span class="badge"></span> {{ hero.name }}
-      </a>
-      <button class="delete" title="delete hero" (click)="delete(hero)">
-        x
-      </button>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th class="fourteen wide">Nome do Herói</th>
+            <th class="deletar">Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of heroes">
+            <td data-label="nome">
+              <a
+                class="badge twelve wide column"
+                routerLink="/detail/{{ hero.id }}"
+              >
+                <div></div>
+                {{ hero.name }}
+              </a>
+            </td>
+            <td data-label="deletar" class="deletar">
+              <i
+                class="ui icon trash red pointer-mouse"
+                (click)="delete(hero)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </li>
-</ul>
-<div>
-  <div class="novo-heroi">
-    <h3 class="titulo-novo-heroi">Nome do novo herói:</h3>
   </div>
-  <div class="input-new-hero">
-    <input id="new-hero" #heroName />
+</div>
+<div class="titulo-herois"><h2>Adicionar novo Herói</h2></div>
+<div class="ui card red fluid">
+  <div class="ui form">
+    <div class="fields">
+      <div class="eight wide field">
+        <label>Nome do novo herói</label>
+        <input #heroName />
+      </div>
+      <div class="eight wide field">
+        <label for="">Poderes</label>
+        <select class="ui fluid search dropdown" multiple="">
+          <option value="">Poderes</option>
+          <option *ngFor="let power of powers" value="{{power.id}}">{{power.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
 
-    <!-- (click) passes input value to add() and then clears the input -->
+  <div class="input-new-hero field">
+    <label></label>
     <button
-      class="add-button"
+      class="blue ui button add-button field"
       (click)="add(heroName.value); heroName.value = ''"
     >
       Adicionar Herói
     </button>
   </div>
+
+
 </div>

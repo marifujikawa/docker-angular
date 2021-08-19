@@ -1,13 +1,36 @@
-
+.ui.card {
+  padding: 1rem;
+}
 .titulo-herois {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 .heroes {
+  .hero-delete {
+    .hero-name {
+      background: rgb(214, 209, 209);
+      padding: 10px;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 5px;
+
+      &.selected {
+        background: black;
+        color: white;
+      }
+    }
+    button {
+      padding: 0.3rem;
+      margin: 0.3rem;
+    }
+  }
   a {
+    display: flex;
+    justify-content: flex-start;
+
     &:link {
       text-decoration: none;
       color: black;
@@ -20,28 +43,15 @@
   li {
     padding-left: 1rem;
     margin-top: 1.5rem;
-    width: 100%;
-    position: relative;
     font-size: 1.5rem;
+    list-style-type: none;
     &:hover > .hero-name {
       cursor: pointer;
       background: red;
     }
-
-    .hero-name {
-      background: rgb(214, 209, 209);
-      padding: 10px;
-      display: flex;
-      width: 300px;
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
-      &.selected {
-        background: black;
-        color: white;
-      }
-    }
   }
 }
+
 .novo-heroi {
   display: flex;
   align-items: center;
@@ -52,14 +62,12 @@
     color: red;
   }
 }
+
 .input-new-hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   input {
     border-radius: 1rem;
     border: solid 0.2rem;
-    width: 20%;
+    width: 100%;
     padding: 0.5rem;
   }
   .add-button {
@@ -68,10 +76,14 @@
     background: black;
     color: white;
     font-weight: 700;
-    padding: 0.5rem;
   }
 }
-.delete {
+.pointer-mouse {
+  &:hover {
+    cursor: pointer;
+  }
+}
+.deletar {
   display: flex;
-  justify-content: right;
+  justify-content: center;
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from '../interfaces/hero';
 import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
+import { Power } from '../interfaces/power';
+import { PowerService } from '../power.service';
+declare var $: any;
 
 @Component({
   selector: 'app-heroes',
@@ -10,17 +13,24 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
+  powers: Power[] = [];
   selectedHero?: Hero;
 
   constructor(
     private heroService: HeroService,
+    private powerService: PowerService,
     private messageService: MessageService
   ) {}
+  ngOnInit(): void {
+    $('.ui.search.dropdown').dropdown({});
+    this.getHeroes();
+    this.getPowers();
+  }
   getHeroes(): void {
     this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
-  ngOnInit(): void {
-    this.getHeroes();
+  getPowers(): void {
+    this.powerService.getPowers().subscribe((powers) => (this.powers = powers));
   }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
