@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable, of } from "rxjs";
-import { tap, catchError } from "rxjs/operators";
-import { Power } from "./interfaces/power";
-import { MessageService } from "./message.service";
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
+import { Power } from './interfaces/power';
+import { MessageService } from './message.service';
 
 @Injectable({ providedIn: 'root' })
 export class PowerService {
@@ -42,14 +41,14 @@ export class PowerService {
   getPower(id: number): Observable<Power> {
     const url = `${this.powersUrl}/${id}`;
     return this.http.get<Power>(url).pipe(
-      tap((_) => this.log(`fetched hero id=${id}`)),
+      tap((_) => this.log(`fetched power id=${id}`)),
       catchError(this.handleError<Power>(`getPower id=${id}`))
     );
   }
   /** PUT: update the hero on the server */
-  updatePower(hero: Power): Observable<any> {
-    return this.http.put(this.powersUrl, hero, this.httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${hero.id}`)),
+  updatePower(power: Power): Observable<any> {
+    return this.http.put(this.powersUrl+"/"+power.id, power, this.httpOptions).pipe(
+      tap((_) => this.log(`updated power id=${power.id}`)),
       catchError(this.handleError<any>('updatePower'))
     );
   }
@@ -57,9 +56,9 @@ export class PowerService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   /** POST: add a new hero to the server */
-  addPower(hero: Power): Observable<Power> {
-    return this.http.post<Power>(this.powersUrl, hero, this.httpOptions).pipe(
-      tap((newPower: Power) => this.log(`added hero w/ id=${newPower.id}`)),
+  addPower(power: Power): Observable<Power> {
+    return this.http.post<Power>(this.powersUrl, power, this.httpOptions).pipe(
+      tap((newPower: Power) => this.log(`added power w/ id=${newPower.id}`)),
       catchError(this.handleError<Power>('addPower'))
     );
   }
@@ -68,7 +67,7 @@ export class PowerService {
     const url = `${this.powersUrl}/${id}`;
 
     return this.http.delete<Power>(url, this.httpOptions).pipe(
-      tap((_) => this.log(`deleted hero id=${id}`)),
+      tap((_) => this.log(`deleted power id=${id}`)),
       catchError(this.handleError<Power>('deletePower'))
     );
   }

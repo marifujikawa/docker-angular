@@ -10,6 +10,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { PowersComponent } from './powers/powers.component';
+import { UpperCaseDirective } from './directives/upper-case.directive';
+import { PowerDetailComponent } from './power-detail/power-detail.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,8 @@ import { PowersComponent } from './powers/powers.component';
     MessagesComponent,
     HeroSearchComponent,
     PowersComponent,
+    UpperCaseDirective,
+    PowerDetailComponent,
 
   ],
   bootstrap: [AppComponent],

@@ -1,2 +1,55 @@
-<ul><li *ngFor="let power of powers">{{power.name}}</li></ul>
-<button>Adicionar Poder</button>
+<div class="titulo"><h2>Poderes Cadastrados</h2></div>
+<div class="heroes ui fluid">
+  <div>
+    <div>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th class="fourteen wide">Nome do Poder</th>
+            <th class="deletar">Deletar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let power of powers">
+            <td data-label="nome">
+              <a
+                class="badge twelve wide column"
+                routerLink="/power/{{ power.id }}"
+              >
+                <div></div>
+                {{ power.name }}
+              </a>
+            </td>
+            <td data-label="deletar" class="deletar">
+              <i
+                class="ui icon trash red pointer-mouse"
+                (click)="deletePower(power)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="titulo"><h2>Adicionar novo Poder</h2></div>
+<div class="ui card red fluid size">
+  <div class="ui form">
+    <div class="fields">
+      <div class="sixteen wide field">
+        <label>Nome do novo Poder</label>
+        <input #powerName upper-case/>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-new-hero field">
+    <label></label>
+    <button
+      class="red ui button add-button field"
+      (click)="add(powerName.value); powerName.value = ''"
+    >
+      Adicionar Poder
+    </button>
+  </div>
+</div>

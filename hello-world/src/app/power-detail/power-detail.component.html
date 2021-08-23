@@ -1,11 +1,11 @@
-<div class="nome-heroi" *ngIf="hero">
+<div class="nome-heroi" *ngIf="power">
   <div>
-    <h2>{{ hero.name | uppercase }}</h2>
+    <h2>{{ power.name | uppercase }}</h2>
     <div class="ui form">
       <div class="fields">
         <div class="sixteen columns wide field">
-          <label>Atualização do Nome do Herói:</label>
-          <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" upper-case/>
+          <label>Atualização do Nome do Poder:</label>
+          <input id="power-name" [(ngModel)]="power.name" placeholder="name" upper-case/>
         </div>
       </div>
       <button class="red ui button add-button field" (click)="save()">

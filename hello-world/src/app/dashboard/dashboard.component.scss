@@ -3,27 +3,26 @@
 h1 {
   text-align: center;
   font-weight: 900;
+  margin:2rem;
 }
 
 .heroes-menu {
   padding: 0;
-  margin: auto;
+  margin: 2rem;
   max-width: 1000px;
-
-  /* flexbox */
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-around;
   align-content: flex-start;
   align-items: flex-start;
 }
 
 a {
-  background-color: #3f525c;
+  background-color: crimson;
   border-radius: 2px;
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-decoration: none;
   display: inline-block;
   color: #fff;

@@ -3,7 +3,8 @@
 @import "../../assets/semantic/dist/semantic.css";
 @import "src/app/styles/_variables.scss";
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
 }
@@ -11,4 +12,64 @@ body, html {
 /* everywhere else */
 * {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 2rem;
+  }
+  .heroes {
+    .hero-delete {
+      .hero-name {
+        background: rgb(214, 209, 209);
+        padding: 10px;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+
+        &.selected {
+          background: black;
+          color: white;
+        }
+      }
+      button {
+        padding: 0.3rem;
+        margin: 0.3rem;
+      }
+    }
+    a {
+      display: flex;
+      justify-content: flex-start;
+
+      &:link {
+        text-decoration: none;
+        color: black;
+      }
+      &:visited {
+        color: black;
+      }
+    }
+
+    li {
+      padding-left: 1rem;
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      list-style-type: none;
+      &:hover > .hero-name {
+        cursor: pointer;
+        background: red;
+      }
+    }
+  }
+  .deletar {
+    display: flex;
+    justify-content: center;
+  }
+}
+.nome-heroi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  color: crimson;
 }

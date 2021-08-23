@@ -1,56 +1,6 @@
 .ui.card {
   padding: 1rem;
 }
-.titulo-herois {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-}
-
-.heroes {
-  .hero-delete {
-    .hero-name {
-      background: rgb(214, 209, 209);
-      padding: 10px;
-      border-bottom-right-radius: 5px;
-      border-top-right-radius: 5px;
-
-      &.selected {
-        background: black;
-        color: white;
-      }
-    }
-    button {
-      padding: 0.3rem;
-      margin: 0.3rem;
-    }
-  }
-  a {
-    display: flex;
-    justify-content: flex-start;
-
-    &:link {
-      text-decoration: none;
-      color: black;
-    }
-    &:visited {
-      color: black;
-    }
-  }
-
-  li {
-    padding-left: 1rem;
-    margin-top: 1.5rem;
-    font-size: 1.5rem;
-    list-style-type: none;
-    &:hover > .hero-name {
-      cursor: pointer;
-      background: red;
-    }
-  }
-}
 
 .novo-heroi {
   display: flex;
@@ -63,27 +13,3 @@
   }
 }
 
-.input-new-hero {
-  input {
-    border-radius: 1rem;
-    border: solid 0.2rem;
-    width: 100%;
-    padding: 0.5rem;
-  }
-  .add-button {
-    border: solid 0.2rem;
-    border-radius: 1rem;
-    background: black;
-    color: white;
-    font-weight: 700;
-  }
-}
-.pointer-mouse {
-  &:hover {
-    cursor: pointer;
-  }
-}
-.deletar {
-  display: flex;
-  justify-content: center;
-}
