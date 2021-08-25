@@ -4,6 +4,7 @@ import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
 import { Power } from '../interfaces/power';
 import { PowerService } from '../power.service';
+import { FormControl, FormGroup } from '@angular/forms';
 declare var $: any;
 
 @Component({
@@ -15,6 +16,11 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   powers: Power[] = [];
   selectedHero?: Hero;
+  heroForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    heroPowers:
+  })
+
 
   constructor(
     private heroService: HeroService,

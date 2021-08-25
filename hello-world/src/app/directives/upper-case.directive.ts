@@ -12,6 +12,7 @@ import {
 })
 export class UpperCaseDirective implements OnChanges, OnInit {
   public input: HTMLInputElement;
+
   constructor(private hostElement: ElementRef) {
     this.input = this.hostElement.nativeElement;
   }

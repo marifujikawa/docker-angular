@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +19,7 @@ import { PowerDetailComponent } from './power-detail/power-detail.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { PowerDetailComponent } from './power-detail/power-detail.component';
     HeroSearchComponent,
     PowersComponent,
     UpperCaseDirective,
-    PowerDetailComponent,
+    PowerDetailComponent
 
   ],
   bootstrap: [AppComponent],
