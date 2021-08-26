@@ -4,7 +4,12 @@ import { HeroService } from '../hero.service';
 import { MessageService } from '../message.service';
 import { Power } from '../interfaces/power';
 import { PowerService } from '../power.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 declare var $: any;
 
 @Component({
@@ -16,16 +21,19 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[] = [];
   powers: Power[] = [];
   selectedHero?: Hero;
-  heroForm: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    heroPowers:
-  })
-
+  heroForm: FormGroup = this.fb.group({
+    name: ['', Validators.required],
+    heroPowers: this.fb.array([
+      this.fb.control('heroId'),
+      this.fb.control('powerId'),
+    ]),
+  });
 
   constructor(
     private heroService: HeroService,
     private powerService: PowerService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private fb: FormBuilder
   ) {}
   ngOnInit(): void {
     $('.ui.search.dropdown').dropdown({});
@@ -43,6 +51,9 @@ export class HeroesComponent implements OnInit {
     this.messageService.add(`olha só id=${hero.id}`);
   }
   add(name: string): void {
+    console.log(this.fb.array);
+
+    return;
     name = name.trim();
     if (!name) {
       return;

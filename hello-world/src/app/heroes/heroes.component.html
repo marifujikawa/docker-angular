@@ -34,17 +34,23 @@
 </div>
 <div class="titulo"><h2>Adicionar novo Herói</h2></div>
 <div class="ui card red fluid">
-  <div class="ui form">
+  <div class="ui form" [formGroup]="heroForm">
     <div class="fields">
       <div class="eight wide field">
         <label>Nome do novo herói</label>
-        <input #heroName upper-case />
+        <input #heroName upper-case formControlName="name" />
       </div>
       <div class="eight wide field">
         <label for="">Poderes</label>
-        <select class="ui fluid search dropdown" multiple="">
+        <select
+          class="ui fluid search dropdown"
+          multiple=""
+          formControlName="heroPowers"
+        >
           <option value="">Poderes</option>
-          <option *ngFor="let power of powers" value="{{power.id}}">{{power.name}}</option>
+          <option *ngFor="let power of powers" value="{{ power.id }}">
+            {{ power.name }}
+          </option>
         </select>
       </div>
     </div>
@@ -59,6 +65,4 @@
       Adicionar Herói
     </button>
   </div>
-
-
 </div>
