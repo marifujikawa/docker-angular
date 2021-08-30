@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from './interfaces/hero';
 import { MessageService } from './message.service';
+import HeroPowers from './interfaces/hero-powers';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
@@ -47,20 +48,24 @@ export class HeroService {
   }
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl+"/"+hero.id, hero, this.httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${hero.id}`)),
-      catchError(this.handleError<any>('updateHero'))
-    );
+    return this.http
+      .put(this.heroesUrl + '/' + hero.id, hero, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`updated hero id=${hero.id}`)),
+        catchError(this.handleError<any>('updateHero'))
+      );
   }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   /** POST: add a new hero to the server */
-  addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
-    );
+  addHero(hero: HeroPowers): Observable<HeroPowers> {
+    return this.http
+      .post<HeroPowers>(this.heroesUrl, hero, this.httpOptions)
+      .pipe(
+        tap((newHero: HeroPowers) => this.log(`added hero `)),
+        catchError(this.handleError<HeroPowers>('addHero'))
+      );
   }
   /** DELETE: delete the hero from the server */
   deleteHero(id: number): Observable<Hero> {

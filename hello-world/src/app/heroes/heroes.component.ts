@@ -5,11 +5,13 @@ import { MessageService } from '../message.service';
 import { Power } from '../interfaces/power';
 import { PowerService } from '../power.service';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import HeroPowers from '../interfaces/hero-powers';
 declare var $: any;
 
 @Component({
@@ -23,10 +25,7 @@ export class HeroesComponent implements OnInit {
   selectedHero?: Hero;
   heroForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
-    heroPowers: this.fb.array([
-      this.fb.control('heroId'),
-      this.fb.control('powerId'),
-    ]),
+    powers: [[], Validators.required],
   });
 
   constructor(
@@ -51,19 +50,30 @@ export class HeroesComponent implements OnInit {
     this.messageService.add(`olha só id=${hero.id}`);
   }
   add(name: string): void {
-    console.log(this.fb.array);
+    console.log(this.heroForm.value);
 
-    return;
     name = name.trim();
     if (!name) {
       return;
     }
-    this.heroService.addHero({ name } as Hero).subscribe((hero) => {
-      this.heroes.push(hero);
+    let heroPowers = this.heroForm.value as HeroPowers;
+    this.heroService.addHero(heroPowers).subscribe((hero) => {
+      //this.heroes.push(heroPowers.hero);
+      this.getHeroes();
+      this.heroForm.value;
+      this.resetForm();
     });
   }
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter((h) => h !== hero);
     this.heroService.deleteHero(hero.id).subscribe();
+  }
+  get powersForm() {
+    return this.heroForm.get('powers') as FormArray;
+  }
+  resetForm() {
+    this.heroForm.reset();
+    this.powersForm.setValue([]);
+    $('.ui.search.dropdown').dropdown('clear');
   }
 }

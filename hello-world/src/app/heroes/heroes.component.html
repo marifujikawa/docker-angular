@@ -45,10 +45,10 @@
         <select
           class="ui fluid search dropdown"
           multiple=""
-          formControlName="heroPowers"
+          formControlName="powers"
         >
-          <option value="">Poderes</option>
-          <option *ngFor="let power of powers" value="{{ power.id }}">
+
+          <option *ngFor="let power of powers" [value]="power">
             {{ power.name }}
           </option>
         </select>
