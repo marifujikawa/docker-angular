@@ -11,7 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import HeroPowers from '../interfaces/hero-powers';
+import HeroPowersViewModel from '../view-model/hero-powers-view-model';
 declare var $: any;
 
 @Component({
@@ -50,19 +50,32 @@ export class HeroesComponent implements OnInit {
     this.messageService.add(`olha só id=${hero.id}`);
   }
   add(name: string): void {
-    console.log(this.heroForm.value);
+    let hero: Hero = {
+      name: this.heroForm.value.name,
+    } as Hero;
+    let powers: Power[] = this.heroForm.value.powers as Power[];
+
+    let heroPowersViewModel: HeroPowersViewModel = {
+      hero: hero,
+      powers: powers,
+    };
+
+    console.log(hero);
 
     name = name.trim();
     if (!name) {
       return;
     }
-    let heroPowers = this.heroForm.value as HeroPowers;
-    this.heroService.addHero(heroPowers).subscribe((hero) => {
-      //this.heroes.push(heroPowers.hero);
-      this.getHeroes();
-      this.heroForm.value;
-      this.resetForm();
-    });
+
+    this.heroService
+      .addHero(heroPowersViewModel)
+      .subscribe((heroPowersVielModelReturn) => {
+        //this.heroes.push(heroPowersViewModel.hero);
+        this.getHeroes();
+        console.log(heroPowersVielModelReturn);
+
+        this.resetForm();
+      });
   }
   delete(hero: Hero): void {
     this.heroes = this.heroes.filter((h) => h !== hero);

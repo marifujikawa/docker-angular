@@ -5,13 +5,30 @@
       <div class="fields">
         <div class="sixteen columns wide field">
           <label>Atualização do Nome do Herói:</label>
-          <input id="hero-name" [(ngModel)]="hero.name" placeholder="name" upper-case/>
+          <input
+            id="hero-name"
+            [(ngModel)]="hero.name"
+            placeholder="name"
+            upper-case
+          />
         </div>
+      </div>
+      <div class="eight wide field">
+        <label for="">Poderes</label>
+        <select
+          class="ui fluid search dropdown"
+          multiple=""
+          formControlName="powers"
+        >
+
+          <option *ngFor="let power of hero.powers" [value]="power">
+            {{ power.name }}
+          </option>
+        </select>
       </div>
       <button class="red ui button add-button field" (click)="save()">
         Salvar
       </button>
-
     </div>
   </div>
 </div>

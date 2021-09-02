@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from './interfaces/hero';
 import { MessageService } from './message.service';
-import HeroPowers from './interfaces/hero-powers';
+import HeroPowersViewModel from './view-model/hero-powers-view-model';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
@@ -59,12 +59,12 @@ export class HeroService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   /** POST: add a new hero to the server */
-  addHero(hero: HeroPowers): Observable<HeroPowers> {
+  addHero(hero: HeroPowersViewModel): Observable<HeroPowersViewModel> {
     return this.http
-      .post<HeroPowers>(this.heroesUrl, hero, this.httpOptions)
+      .post<HeroPowersViewModel>(this.heroesUrl, hero, this.httpOptions)
       .pipe(
-        tap((newHero: HeroPowers) => this.log(`added hero `)),
-        catchError(this.handleError<HeroPowers>('addHero'))
+        tap(() => this.log(`added hero `)),
+        catchError(this.handleError<HeroPowersViewModel>('addHero'))
       );
   }
   /** DELETE: delete the hero from the server */
